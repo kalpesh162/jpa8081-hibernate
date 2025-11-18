@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<hibernate-mapping>
+
+	<class name="com.entity.Employee" table="empinfo">
+
+		<id name="id" column="eid">
+			<generator class="increment" />
+		</id>
+		<property name="name" column="ename"></property>
+		<property name="salary" column="esalary"></property>
+
+	</class>
+
+</hibernate-mapping>
