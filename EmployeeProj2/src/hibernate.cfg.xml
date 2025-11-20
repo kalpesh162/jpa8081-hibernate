@@ -27,7 +27,7 @@
 
 		<!-- Mapping Resource Properties -->
 
-		<mapping resource="employee.hbm.xml"/>
+		<mapping class="com.entity.Employee"/>
 	</session-factory>
 
 
