@@ -5,7 +5,7 @@
 	<class name="com.entity.Employee" table="empinfo">
 
 		<id name="id" column="eid">
-			<generator class="increment" />
+			<generator class="identity" />
 		</id>
 		<property name="name" column="ename"></property>
 		<property name="salary" column="esalary"></property>

@@ -7,15 +7,9 @@ import org.hibernate.cfg.Configuration;
 
 import com.entity.Employee;
 
-public class InsertData {
+public class UpdateData {
 
 	public static void main(String[] args) {
-
-		Employee employee = new Employee();
-		
-		employee.setName("Raveena");
-		employee.setSalary(25000);
-
 		Configuration config = new Configuration();
 		config.configure("hibernate.cfg.xml");
 
@@ -25,14 +19,18 @@ public class InsertData {
 
 		Transaction tx = session.beginTransaction();
 
-		session.save(employee);
+		Employee employee = new Employee();
+		employee.setId(2);
+		employee.setName("Kalpesh");
+		employee.setSalary(10000);
+
+		session.update(employee); // saveorupdate()
 
 		tx.commit();
 
 		session.close();
 
 		factory.close();
-
 	}
 
 }
