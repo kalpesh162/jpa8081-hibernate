@@ -15,7 +15,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	@Override
 	public void saveEmployee(Employee employee) {
 		Transaction tx = null;
-		try (SessionFactory factory = HibernateUtil.getSessionFactory(); Session session = factory.openSession()) {
+		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
 
 			tx = session.beginTransaction();
 
@@ -97,6 +97,38 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		try (SessionFactory factory = HibernateUtil.getSessionFactory(); Session session = factory.openSession()) {
 
 			Query query = session.createQuery(hql, Employee.class);
+
+			return query.list();
+
+		} catch (Exception e) {
+
+			throw e;
+
+		}
+	}
+
+	@Override
+	public List<String> getAllEmployeesNames() {
+		String hql = "SELECT name FROM Employee e";
+		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+
+			Query<String> query = session.createQuery(hql);
+
+			return query.list();
+
+		} catch (Exception e) {
+
+			throw e;
+
+		}
+	}
+
+	@Override
+	public List<Object[]> getAllNameAndSalaryEmployeesNames() {
+		String hql = "SELECT name,salary FROM Employee e";
+		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+
+			Query<Object[]> query = session.createQuery(hql);
 
 			return query.list();
 

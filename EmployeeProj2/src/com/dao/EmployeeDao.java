@@ -16,4 +16,8 @@ public interface EmployeeDao {
 
 	List<Employee> getAllEmployees();
 
+	List<String> getAllEmployeesNames();
+
+	List<Object[]> getAllNameAndSalaryEmployeesNames();
+
 }
