@@ -68,13 +68,10 @@ public class EmployeeDaoImpl implements EmployeeDao {
 			throw e;
 		}
 	}
-
 	public List<Employee> getAllEmployee() {
 		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
 			String hql = "from Employee e";
-
 			return session.createQuery(hql, Employee.class).list();
-
 		} catch (Exception e) {
 			throw e;
 		}
