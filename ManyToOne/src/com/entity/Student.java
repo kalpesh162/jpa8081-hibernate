@@ -2,11 +2,14 @@ package com.entity;
 
 import java.util.Objects;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -15,11 +18,17 @@ public class Student {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+
 	@Column(nullable = false)
 	private String name;
-	
+
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "dept_id")
+	private Department department;
+
 	public Student() {
 	}
+
 	public Integer getId() {
 		return id;
 	}
@@ -46,16 +55,12 @@ public class Student {
 		return Objects.hash(id, name);
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Student other = (Student) obj;
-		return Objects.equals(id, other.id) && Objects.equals(name, other.name);
+	public Department getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(Department department) {
+		this.department = department;
 	}
 
 }

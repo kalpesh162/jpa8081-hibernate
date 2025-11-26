@@ -1,7 +1,5 @@
 package com.entity;
 
-import java.util.Objects;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,16 +8,19 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "student")
-public class Student {
+@Table(name = "department")
+public class Department {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	@Column(nullable = false)
-	private String name;
 	
-	public Student() {
+	@Column(nullable = false, unique = true)
+	private String name;
+
+	public Department() {
+		// TODO Auto-generated constructor stub
 	}
+
 	public Integer getId() {
 		return id;
 	}
@@ -38,24 +39,7 @@ public class Student {
 
 	@Override
 	public String toString() {
-		return "Student [id=" + id + ", name=" + name + "]";
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(id, name);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Student other = (Student) obj;
-		return Objects.equals(id, other.id) && Objects.equals(name, other.name);
+		return "Department [id=" + id + ", name=" + name  + "]";
 	}
 
 }
