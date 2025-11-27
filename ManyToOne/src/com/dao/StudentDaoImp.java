@@ -13,7 +13,7 @@ public class StudentDaoImp implements StudentDao {
 		Transaction tx = null;
 		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
 			tx = session.beginTransaction();
-
+			session.save(student.getDepartment());
 			session.save(student); // id name address
 			// student ---> department
 
