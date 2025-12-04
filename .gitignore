@@ -5,3 +5,10 @@ Servers/
 */.classpath 
 */.project 
 *.class 
+.metadata/ 
+Servers/ 
+*/target/ 
+*/.settings/ 
+*/.classpath 
+*/.project 
+*.class 
